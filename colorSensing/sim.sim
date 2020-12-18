@@ -1,0 +1,4 @@
+bots:
+- custom/colorSensing/bot/colorBot.bot
+preset_file: custom/colorSensing/preset/preset.yaml
+hidden: true

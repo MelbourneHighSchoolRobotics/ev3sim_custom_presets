@@ -1,0 +1,32 @@
+base_plate:
+  children: []
+  friction: 0.8
+  key: phys_obj
+  mass: 5
+  restitution: 0.2
+  visual:
+    fill: '#cfd3d3'
+    name: Polygon
+    stroke: '#262424'
+    stroke_width: 0.1
+    verts:
+    - - 2.474873734152917
+      - 2.474873734152917
+    - - 2.474873734152917
+      - -2.4748737341529163
+    - - -2.4748737341529163
+      - -2.4748737341529172
+    - - -2.4748737341529172
+      - 2.474873734152916
+    zPos: 1
+devices:
+- ColorSensor:
+    port: in1
+    position:
+    - 0.0
+    - 0.0
+    rotation: 0
+    zPos: 3
+preview_path: custom/colorSensing/images/colorBot.png
+script: custom/colorSensing/code.py
+hidden: true
