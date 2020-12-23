@@ -4,7 +4,6 @@ import pymunk
 from ev3sim.visual.manager import ScreenObjectManager
 from ev3sim.simulation.world import World
 import random
-from ev3sim.events import GAME_RESET
 from ev3sim.simulation.loader import ScriptLoader
 from ev3sim.simulation.interactor import IInteractor
 from ev3sim.visual.utils import hsl_to_rgb, rgb_to_hex, screenspace_to_worldspace
@@ -18,34 +17,13 @@ class ColorInteractor(IInteractor):
         ("Blue", 220, 245, 0.8, 1, 0.3, 0.55),
     ]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    def locateBots(self):
-        robots = []
-        bot_index = 0
-        while True:
-            # Find the next robot.
-            possible_keys = []
-            for key in ScriptLoader.instance.object_map.keys():
-                if key.startswith(f"Robot-{bot_index}"):
-                    possible_keys.append(key)
-            if len(possible_keys) == 0:
-                break
-            possible_keys.sort(key=len)
-            robots.append(ScriptLoader.instance.object_map[possible_keys[0]])
-            bot_index += 1
-
-        assert len(robots) == 1
-        self.robot = robots[0]
     
     def startUp(self):
-        self.locateBots()
-        self.robot.robot_class.onSpawn()
-        self.restartBots()
         self.setColor(*self.COLORS_1[1])
         self.clearColorButtons()
         self.addColorButtons(self.COLORS_1)
+        super().startUp()
+        self.robot = self.robots[0]
 
     def clearColorButtons(self):
         # If we want multiple difficulties (likely).
@@ -120,12 +98,6 @@ class ColorInteractor(IInteractor):
             "vAlignment": "m",
         })
         ScriptLoader.instance.loadElements(elems)
-
-    def restartBots(self):
-        for robotID in ScriptLoader.instance.robots.keys():
-            # Restart the robot scripts.
-            ScriptLoader.instance.startProcess(robotID, kill_recent=True)
-            ScriptLoader.instance.sendEvent(robotID, GAME_RESET, {})
 
     def randomColor(self, minHue, maxHue, minSat, maxSat, minLight, maxLight):
         h = random.randint(minHue, maxHue) % 360
