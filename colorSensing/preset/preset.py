@@ -1,14 +1,11 @@
-from ev3sim.objects.base import STATIC_CATEGORY
 import pygame
-import pymunk
-from ev3sim.visual.manager import ScreenObjectManager
-from ev3sim.simulation.world import World
 import random
 from ev3sim.simulation.loader import ScriptLoader
-from ev3sim.simulation.interactor import IInteractor
-from ev3sim.visual.utils import hsl_to_rgb, rgb_to_hex, screenspace_to_worldspace
+from ev3sim.simulation.interactor import PygameGuiInteractor
+from ev3sim.visual.utils import hsl_to_rgb, rgb_to_hex
+import pygame_gui
 
-class ColorInteractor(IInteractor):
+class ColorInteractor(PygameGuiInteractor):
     
     COLORS_1 = [
         ("Yellow", 55, 65, 0.9, 1, 0.45, 0.55),
@@ -17,87 +14,118 @@ class ColorInteractor(IInteractor):
         ("Blue", 220, 245, 0.8, 1, 0.3, 0.55),
     ]
 
+    DRAWING_LIST = "COLORS_1"
     
     def startUp(self):
         self.setColor(*self.COLORS_1[1])
-        self.clearColorButtons()
-        self.addColorButtons(self.COLORS_1)
         super().startUp()
         self.robot = self.robots[0]
 
-    def clearColorButtons(self):
-        # If we want multiple difficulties (likely).
-        for key in ScriptLoader.instance.object_map:
-            if key.startswith("color-button"):
-                World.instance.unregisterObject(ScriptLoader.instance.object_map[key])
-                ScreenObjectManager.instance.unregisterVisual(key)
-                del ScriptLoader.instance.object_map[key]
+    def clearObjects(self):
+        return super().clearObjects()
 
-    def addColorButtons(self, colorList):
-        self.currentColors = colorList
-        elems = []
-        inc = 36 / (len(colorList) + 1)
-        for i in range(len(colorList)):
-            h = (colorList[i][1] + colorList[i][2]) // 2
-            s = (colorList[i][3] + colorList[i][4]) / 2
-            l = (colorList[i][5] + colorList[i][6]) / 2
-            elems.append({
-                "type": "object",
-                "physics": True,
-                "static": True,
-                "visual": {
-                    "name": "Rectangle",
-                    "width": 6,
-                    "height": 3,
-                    "fill": self.randomColor(h, h, s, s, l, l),
-                    "stroke_width": 0.1,
-                    "stroke": "#ffffff",
-                    "zPos": 0.3,
+    def generateObjects(self):
+        # Generate the left buttons
+        generic_button_data = {
+            "color-button": {
+                "colours": {
+                    "normal_text": "#ffffff",
+                    "hovered_text": "#ffffff",
+                    "active_text": "#ffffff",
+                    "normal_border": "#dddddd",
+                    "hovered_border": "#eeeeee",
+                    "active_border": "#ffffff",
                 },
-                "key": f"color-button-{i}",
-                "position": [-16, 18 - inc * (i+0.5)],
-            })
-            elems.append({
-                "type": "visual",
-                "name": "Text",
-                "text": colorList[i][0],
-                "font_style": "fonts/Poppins-Regular.ttf",
-                "fill": "#ffffff",
-                "zPos": 0.4,
-                "key": f"color-button-{i}-text",
-                "position": [-16, 18 - inc * (i+0.5)],
-                "hAlignment": "m",
-                "vAlignment": "m",
-            })
-        elems.append({
-                "type": "object",
-            "physics": True,
-            "static": True,
-            "visual": {
-                "name": "Rectangle",
-                "width": 6,
-                "height": 3,
-                "fill": "#444444",
-                "stroke_width": 0.1,
-                "stroke": "#ffffff",
-                "zPos": 0.3,
-            },
-            "key": f"color-button-{len(colorList)}",
-            "position": [-16, 18 - inc * (len(colorList)+0.5)],
-        })
-        elems.append({
-            "type": "visual",
-            "name": "Text",
-            "text": "?",
-            "font_style": "fonts/Poppins-Regular.ttf",
-            "fill": "#ffffff",
-            "zPos": 0.4,
-            "key": f"color-button-{len(colorList)}-text",
-            "position": [-16, 18 - inc * (len(colorList)+0.5)],
-            "hAlignment": "m",
-            "vAlignment": "m",
-        })
-        ScriptLoader.instance.loadElements(elems)
+                "font": {
+                    "name": "Poppins",
+                    "size": "20",
+                    "regular_resource": {
+                        "package": "ev3sim.assets.fonts",
+                        "resource": "Poppins-Regular.ttf"
+                    },
+                    "bold_resource": {
+                        "package": "ev3sim.assets.fonts",
+                        "resource": "Poppins-Bold.ttf"
+                    },
+                    "italic_resource": {
+                        "package": "ev3sim.assets.fonts",
+                        "resource": "Poppins-Italic.ttf"
+                    },
+                    "bold_italic_resource": {
+                        "package": "ev3sim.assets.fonts",
+                        "resource": "Poppins-BoldItalic.ttf"
+                    },
+                },
+                "misc": {
+                    "shape": "rounded_rectangle",
+                    "shape_corner_radius": "6",
+                    "border_width": "4",
+                }
+            }
+        }
+        self.ui_theme._load_element_colour_data_from_theme("colours", f"color-button", generic_button_data)
+        self.ui_theme._load_element_font_data_from_theme("font", f"color-button", generic_button_data)
+        self.ui_theme._load_element_misc_data_from_theme("misc", f"color-button", generic_button_data)
+        self.ui_theme._load_fonts()
+
+        self.currentColors = getattr(self, self.DRAWING_LIST)
+        button_top_inc = self._size[1] / (len(self.currentColors) + 1)
+        button_top_orig = button_top_inc / 4
+        button_left = 3 * self._size[0] / 32
+        button_size = self._size[0] / 8, button_top_inc / 2
+        data = {}
+        def click(i):
+            if i == len(self.currentColors):
+                i = random.randint(0, len(self.currentColors) - 1)
+            self.setColor(*self.currentColors[i])
+            self.restartBots()
+        for i, entry in enumerate(self.currentColors + [("Random", 0, 0, 0, 0, 0.2, 0.2)]):
+            # Create button
+            but = pygame_gui.elements.UIButton(
+                relative_rect=pygame.Rect(button_left, button_top_orig + button_top_inc * i, *button_size), 
+                text=entry[0], 
+                manager=self,
+                object_id=pygame_gui.core.ObjectID(f"color-button-{i}", "color-button")
+            )
+            self.addButtonEvent(f"color-button-{i}", click, i)
+            self._all_objs.append(but)
+
+            # Set colour.
+            h = (entry[1] + entry[2]) // 2
+            s = (entry[3] + entry[4]) / 2
+            l = (entry[5] + entry[6]) / 2
+            col = self.randomColor(h, h, s, s, l, l)
+
+            data[f"color-button-{i}"] = {
+                "colours": {
+                    "normal_bg": col,
+                    "hovered_bg": col,
+                    "active_bg": col,
+                }
+            }
+            self.ui_theme._load_element_colour_data_from_theme("colours", f"color-button-{i}", data)
+            but.rebuild_from_changed_theme_data()
+        
+        print(1)
+        # Create the reset button
+        but = pygame_gui.elements.UIButton(
+            relative_rect=pygame.Rect(self._size[0] - button_size[0] - button_left, self._size[1]/2 - button_size[1]/2, *button_size), 
+            text="Restart", 
+            manager=self,
+            object_id=pygame_gui.core.ObjectID("restart-button", "color-button")
+        )
+        self.addButtonEvent("restart-button", self.restartBots)
+        self._all_objs.append(but)
+
+        data["restart-button"] = {
+            "colours": {
+                "normal_bg": "#666666",
+                "hovered_bg": "#666666",
+                "active_bg": "#666666",
+            }
+        }
+        self.ui_theme._load_element_colour_data_from_theme("colours", "restart-button", data)
+        but.rebuild_from_changed_theme_data()
 
     def randomColor(self, minHue, maxHue, minSat, maxSat, minLight, maxLight):
         h = random.randint(minHue, maxHue) % 360
@@ -111,19 +139,3 @@ class ColorInteractor(IInteractor):
         ScriptLoader.instance.object_map["strip"].fill = r
         ScriptLoader.instance.object_map["colorText"].fill = r
         ScriptLoader.instance.object_map["colorText"].text = cName
-
-    def handleEvent(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            m_pos = screenspace_to_worldspace(event.pos)
-            shapes = World.instance.space.point_query(
-                [float(v) for v in m_pos], 0.0, pymunk.ShapeFilter(mask=STATIC_CATEGORY)
-            )
-            for shape in shapes:
-                if shape.shape.obj.key.startswith("color-button"):
-                    index = int(shape.shape.obj.key.split("-")[2])
-                    if index == len(self.currentColors):
-                        index = random.randint(0, len(self.currentColors)-1)
-                    self.setColor(*self.currentColors[index])
-                    self.restartBots()
-                if shape.shape.obj.key == "restart-button":
-                    self.restartBots()
