@@ -3,6 +3,8 @@ import random
 from ev3sim.simulation.loader import ScriptLoader
 from ev3sim.simulation.interactor import PygameGuiInteractor
 from ev3sim.visual.utils import hsl_to_rgb, rgb_to_hex
+from ev3sim.constants import EV3SIM_BOT_COMMAND
+from ev3sim.code_helpers import CommandSystem
 import pygame_gui
 
 class ColorInteractor(PygameGuiInteractor):
@@ -105,8 +107,7 @@ class ColorInteractor(PygameGuiInteractor):
             }
             self.ui_theme._load_element_colour_data_from_theme("colours", f"color-button-{i}", data)
             but.rebuild_from_changed_theme_data()
-        
-        print(1)
+
         # Create the reset button
         but = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(self._size[0] - button_size[0] - button_left, self._size[1]/2 - button_size[1]/2, *button_size), 
@@ -135,7 +136,25 @@ class ColorInteractor(PygameGuiInteractor):
         return rgb_to_hex(int(r * 255), int(g * 255), int(b * 255))
 
     def setColor(self, cName, *args):
+        self.current_color = cName
         r = self.randomColor(*args)
         ScriptLoader.instance.object_map["strip"].fill = r
         ScriptLoader.instance.object_map["colorText"].fill = r
-        ScriptLoader.instance.object_map["colorText"].text = cName
+        ScriptLoader.instance.object_map["colorText"].text = "Waiting for response..."
+        ScriptLoader.instance.object_map["colorBG"].fill = "#aaaaaa"
+
+    def handleEvent(self, event):
+        super().handleEvent(event)
+        if (
+            event.type == EV3SIM_BOT_COMMAND and 
+            event.command_type == CommandSystem.TYPE_CUSTOM and
+            isinstance(event.payload, str) and
+            event.payload.startswith("Colour: ")
+        ):
+            colour = event.payload[8:]
+            if colour.lower().strip() == self.current_color.lower().strip():
+                ScriptLoader.instance.object_map["colorText"].text = colour + " - Correct!"
+                ScriptLoader.instance.object_map["colorBG"].fill = "#22aa22"
+            else:
+                ScriptLoader.instance.object_map["colorText"].text = colour + " - Wrong!"
+                ScriptLoader.instance.object_map["colorBG"].fill = "#aa2222"

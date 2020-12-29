@@ -33,6 +33,17 @@ elements:
   key: strip
   sensorVisible: true
 - type: visual
+  name: Rectangle
+  width: 20
+  height: 4
+  fill: '#000000'
+  stroke_width: 0.1
+  stroke: '#ffffff'
+  position: [0, 11]
+  zPos: 0.3
+  key: colorBG
+  sensorVisible: true
+- type: visual
   name: Text
   text: ""
   font_style: fonts/Poppins-Regular.ttf
