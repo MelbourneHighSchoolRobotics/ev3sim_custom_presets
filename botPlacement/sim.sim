@@ -1,0 +1,4 @@
+bots:
+- custom/botPlacement/bot/placementBot.bot
+preset_file: custom/botPlacement/preset/preset.yaml
+hidden: true

@@ -1,0 +1,17 @@
+base_plate:
+  children: []
+  friction: 0.8
+  key: phys_obj
+  mass: 5
+  restitution: 0.2
+  visual:
+    fill: '#cfd3d3'
+    name: Circle
+    radius: 6
+    stroke: '#262424'
+    stroke_width: 0.1
+    zPos: 1
+devices: []
+hidden: true
+preview_path: custom/botPlacement/images/placementBot.png
+script: custom\botPlacement\code.py
