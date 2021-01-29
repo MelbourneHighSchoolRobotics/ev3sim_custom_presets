@@ -1,0 +1,4 @@
+bots:
+- custom/botMoving/bot/movingBot.bot
+preset_file: custom/botMoving/preset/preset.yaml
+hidden: true

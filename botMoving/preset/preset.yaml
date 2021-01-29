@@ -1,0 +1,98 @@
+colours:
+  bg_color: "#aaaaaa"
+
+interactors:
+- class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
+- class_path: [custom/botMoving/preset/preset.py, MovementInteractor]
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 0.1
+  key: bg
+  sensorVisible: true
+- type: visual
+  name: Rectangle
+  width: 120
+  height: 90
+  fill: '#444444'
+  stroke_width: 0.1
+  stroke: '#ffffff'
+  position: [0, 0]
+  zPos: 0.2
+  key: bgTable1
+  sensorVisible: true
+- type: visual
+  name: Text
+  text: "Waiting for response..."
+  font_style: fonts/Poppins-Regular.ttf
+  fill: "#ffffff"
+  font_size: 48
+  position: [0, 48]
+  hAlignment: m
+  vAlignment: baseline
+  zPos: 5
+  key: positionText
+- type: visual
+  name: Rectangle
+  width: 110
+  height: 12
+  fill: '#666666'
+  stroke_width: 0.1
+  stroke: '#ffffff'
+  position: [0, 51]
+  zPos: 0.3
+  key: positionBG
+  sensorVisible: true
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 150
+    height: 10
+    fill: null
+    zPos: 10
+  position: [0, -50]
+  key: botBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 150
+    height: 10
+    fill: null
+  position: [0, 50]
+  key: topBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 10
+    height: 150
+    fill: null
+  position: [-65, 0]
+  key: leftBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 10
+    height: 150
+    fill: null
+  position: [65, 0]
+  key: rightBar
