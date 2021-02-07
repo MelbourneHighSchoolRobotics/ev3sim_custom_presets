@@ -19,6 +19,3 @@ sideMotor = LargeMotor("outA")
 verticalMotor = LargeMotor("outB")
 
 # Your code goes here!
-# verticalMotor.on_for_rotations(100, 15)
-
-wait_for_tick()
