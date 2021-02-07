@@ -27,8 +27,8 @@ class MovementInteractor(PygameGuiInteractor):
         self.setBotPos()
 
         self.target_position = [
-            int(-35 + 90 * random.random()),
-            int(-20 + 60 * random.random()),
+            int(-30 + 80 * random.random()),
+            int(-40 + 60 * random.random()),
         ]
         self.ball_centre.body.position = self.target_position
         self.ball_centre.position = self.target_position
