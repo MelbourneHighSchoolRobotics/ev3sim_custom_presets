@@ -66,8 +66,8 @@ class MovementInteractor(PygameGuiInteractor):
         if hasattr(self, "target_position"):
             ScriptLoader.instance.sendEvent(
                 "Robot-0", "on_spawn", {"position": (
-                    -(-50 - self.target_position[0]),
-                    35 - self.target_position[1]
+                    self.target_position[0],
+                    self.target_position[1],
                 )}
             )
 
