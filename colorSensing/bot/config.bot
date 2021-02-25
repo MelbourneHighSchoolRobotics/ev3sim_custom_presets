@@ -27,6 +27,4 @@ devices:
     - 0.0
     rotation: 0
     zPos: 3
-preview_path: custom/colorSensing/images/colorBot.png
-script: custom/colorSensing/code.py
 hidden: true

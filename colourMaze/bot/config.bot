@@ -41,5 +41,3 @@ devices:
     - 0.0
     rotation: 0
     zPos: 3.75
-preview_path: custom/colourMaze/images/movingBot.png
-script: custom\colourMaze\code.py

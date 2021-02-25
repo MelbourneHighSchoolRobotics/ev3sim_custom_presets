@@ -13,5 +13,3 @@ base_plate:
     zPos: 1
 devices: []
 hidden: true
-preview_path: custom/botPlacement/images/placementBot.png
-script: custom\botPlacement\code.py

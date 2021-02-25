@@ -1,4 +1,4 @@
 bots:
-- custom/colourMaze/bot/movingBot.bot
+- custom/colourMaze/bot
 preset_file: custom/colourMaze/preset/preset.yaml
 hidden: true
