@@ -7,4 +7,4 @@ A collection of custom presets used in tasks.
 2. Download the folder preset you want.
 3. Move it into the `custom` folder that has been created inside you workspace folder.
 4. Double click the `sim` file in the copied folder to start the simulation.
-5. Change the code in `code.py` to solve the task!
+5. Change the code in `bot/code.py` to solve the task!
