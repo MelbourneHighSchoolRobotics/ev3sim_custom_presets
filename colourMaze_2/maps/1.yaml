@@ -1,0 +1,5 @@
+dimensions: [2, 3]
+spawn: [0, 2]
+passcode: 1-1-4
+colours: GBGRRB
+walls: .*..*....*....*..

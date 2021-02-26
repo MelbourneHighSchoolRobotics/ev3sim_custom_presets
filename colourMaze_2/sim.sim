@@ -1,0 +1,4 @@
+bots:
+- custom/colourMaze_2/bot
+preset_file: custom/colourMaze_2/preset/preset.yaml
+hidden: true
