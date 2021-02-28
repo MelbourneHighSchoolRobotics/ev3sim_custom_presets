@@ -1,6 +1,7 @@
 from ev3sim.code_helpers import CommandSystem
 from ev3sim.constants import EV3SIM_BOT_COMMAND
 import yaml
+import math
 from os.path import join
 from ev3sim.visual.objects import visualFactory
 import pygame
@@ -18,9 +19,11 @@ class MazeInteractor(PygameGuiInteractor):
         "R": "#ff0000",
         "G": "#00ff00",
         "B": "#0000ff",
+        "E": "#ffffff"
     }
 
     width = 20
+    margin = 3
     offset = [2, 1.5]
 
     def startUp(self):
@@ -28,7 +31,7 @@ class MazeInteractor(PygameGuiInteractor):
         self.robot = self.robots[0]
         self.walls = []
         self.colours = []
-        self.loadMap("maps/1.yaml")
+        self.loadMap("maps/3.yaml")
         self.spawnPosition()
 
     def loadMap(self, map_path):
@@ -50,18 +53,21 @@ class MazeInteractor(PygameGuiInteractor):
         self.passcode = conf["passcode"]
         self.colour_map = conf["colours"]
         self.wall_map = conf["walls"]
+        self.rotation = conf.get("rotation", 0) * math.pi / 180
         # Spawn colours
         for x in range(self.dimensions[0]):
             for y in range(self.dimensions[1]):
+                index = self.colour_map[y*self.dimensions[0]+x]
+                if index == "_": continue
                 c_key = f"movement_bot_colour-{x}-{y}"
                 c_obj = visualFactory(
                     name="Rectangle",
-                    width=self.width,
-                    height=self.width,
+                    width=self.width - self.margin,
+                    height=self.width - self.margin,
                     position=[
                         self.width * (x-self.offset[0]), -self.width * (y-self.offset[1]),
                     ],
-                    fill=self.COLOURS[self.colour_map[y*self.dimensions[0]+x]],
+                    fill=self.COLOURS[index],
                     sensorVisible=True,
                     stroke_width=0,
                     zPos=0.5,
@@ -125,7 +131,7 @@ class MazeInteractor(PygameGuiInteractor):
 
 
     def setBotPos(self):
-        self.robot.body.angle = 0
+        self.robot.body.angle = self.rotation
         self.robot.body.position = [self.width * (self.spawn[0]-self.offset[0]), -self.width * (self.spawn[1]-self.offset[1])]
         self.robot.position = self.robot.body.position
         self.robot.rotation = self.robot.body.angle
