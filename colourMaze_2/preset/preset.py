@@ -24,14 +24,14 @@ class MazeInteractor(PygameGuiInteractor):
 
     width = 20
     margin = 3
-    offset = [2, 1.5]
+    offset = [2.5, 1.5]
 
     def startUp(self):
         super().startUp()
         self.robot = self.robots[0]
         self.walls = []
         self.colours = []
-        self.loadMap("maps/3.yaml")
+        self.loadMap("maps/1.yaml")
         self.spawnPosition()
 
     def loadMap(self, map_path):
@@ -190,20 +190,22 @@ class MazeInteractor(PygameGuiInteractor):
         self.ui_theme._load_element_misc_data_from_theme("misc", f"preset-button", generic_button_data)
         self.ui_theme._load_fonts()
 
-        button_top_inc = self._size[1] / 5
-        button_right = self._size[0] * 15 / 16
-        button_size = self._size[0] / 8, button_top_inc / 2
-        reset_but = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect(button_right - button_size[0], self._size[1] / 2 - button_size[1] / 2, *button_size), 
-            text="Restart", 
-            manager=self,
-            object_id=pygame_gui.core.ObjectID(f"restart-button", "preset-button")
-        )
-        def event():
+        def event(x):
+            self.loadMap(f"maps/{x}.yaml")
             self.setBotPos()
             self.restartBots()
-        self.addButtonEvent("restart-button", event)
-        self._all_objs.append(reset_but)
+
+        button_top_inc = self._size[1] / 5
+        button_size = self._size[0] / 8, button_top_inc / 2
+        for x in range(1, 4):
+            but = pygame_gui.elements.UIButton(
+                relative_rect=pygame.Rect(self._size[0] / 2 - 9 / 2 * button_size[0] + 2 * x * button_size[0], self._size[1] - button_size[1] * 2, *button_size), 
+                text=f"Map {x}", 
+                manager=self,
+                object_id=pygame_gui.core.ObjectID(f"preset-button-{x}", "preset-button")
+            )
+            self.addButtonEvent(f"preset-button-{x}", event, x)
+            self._all_objs.append(but)
             
     def handleEvent(self, event):
         super().handleEvent(event)
@@ -213,8 +215,8 @@ class MazeInteractor(PygameGuiInteractor):
             isinstance(event.payload, str)
         ):
             if event.payload == self.passcode:
-                ScriptLoader.instance.object_map["positionText"].text = event.payload + " - Correct!"
+                ScriptLoader.instance.object_map["positionText"].text = event.payload
                 ScriptLoader.instance.object_map["positionBG"].fill = "#22aa22"
             else:
-                ScriptLoader.instance.object_map["positionText"].text = event.payload + " - Wrong!"
+                ScriptLoader.instance.object_map["positionText"].text = event.payload
                 ScriptLoader.instance.object_map["positionBG"].fill = "#aa2222"

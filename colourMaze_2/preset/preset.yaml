@@ -25,7 +25,7 @@ elements:
   sensorVisible: true
 - type: visual
   name: Rectangle
-  width: 120
+  width: 150
   height: 90
   fill: '#444444'
   stroke_width: 0.1
@@ -47,7 +47,7 @@ elements:
   key: positionText
 - type: visual
   name: Rectangle
-  width: 110
+  width: 130
   height: 12
   fill: '#666666'
   stroke_width: 0.1
