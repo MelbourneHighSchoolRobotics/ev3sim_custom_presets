@@ -1,0 +1,6 @@
+dimensions: [5, 3]
+spawn: [0, 0]
+grid:
+- RRDRD
+- DLLUD
+- RRRUE

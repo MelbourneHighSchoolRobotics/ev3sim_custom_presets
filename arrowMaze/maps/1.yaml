@@ -1,0 +1,6 @@
+dimensions: [3, 3]
+spawn: [0, 0]
+grid:
+- RRD
+- RED
+- ULL
