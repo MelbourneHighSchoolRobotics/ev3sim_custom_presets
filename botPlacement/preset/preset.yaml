@@ -5,6 +5,8 @@ interactors:
 - class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
 - class_path: [custom/botPlacement/preset/preset.py, PlacementInteractor]
 
+preview_path: custom/botPlacement/preview.png
+
 settings:
   screen:
     MAP_WIDTH: 200

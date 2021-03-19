@@ -1,4 +1,3 @@
 bots:
 - custom/arrowMaze/bot
 preset_file: custom/arrowMaze/preset/preset.yaml
-hidden: true

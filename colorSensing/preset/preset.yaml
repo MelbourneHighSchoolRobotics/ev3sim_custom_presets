@@ -4,6 +4,8 @@ colours:
 interactors:
 - class_path: [custom/colorSensing/preset/preset.py, ColorInteractor]
 
+preview_path: custom/colorSensing/preview.png
+
 settings:
   screen:
     MAP_WIDTH: 48

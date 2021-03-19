@@ -1,4 +1,3 @@
 bots:
 - custom/colorSensing/bot
 preset_file: custom/colorSensing/preset/preset.yaml
-hidden: true

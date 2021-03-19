@@ -6,6 +6,8 @@ interactors:
 - class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
 - class_path: [custom/colourMaze/preset/preset.py, MovementInteractor]
 
+preview_path: custom/colourMaze/preview.png
+
 settings:
   screen:
     MAP_WIDTH: 200
