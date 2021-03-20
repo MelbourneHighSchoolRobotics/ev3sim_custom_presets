@@ -34,3 +34,4 @@ devices:
     - -4.0
     rotation: -90.0
     zPos: 3.5
+hidden: true

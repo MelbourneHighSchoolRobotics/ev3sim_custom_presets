@@ -48,3 +48,4 @@ devices:
     - 0.0
     rotation: 0
     zPos: 3.875
+hidden: true
