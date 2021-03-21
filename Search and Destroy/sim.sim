@@ -1,0 +1,3 @@
+bots:
+- custom/Search and Destroy/bot
+preset_file: custom/Search and Destroy/preset/preset.yaml

@@ -3,9 +3,9 @@ colours:
 
 interactors:
 - class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
-- class_path: [custom/botMoving/preset/preset.py, MovementInteractor]
+- class_path: [custom/Search and Destroy/preset/preset.py, MovementInteractor]
 
-preview_path: custom/botMoving/preview.png
+preview_path: custom/Search and Destroy/preview.png
 
 settings:
   screen:
