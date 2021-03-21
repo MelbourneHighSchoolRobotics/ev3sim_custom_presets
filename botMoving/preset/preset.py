@@ -63,13 +63,8 @@ class MovementInteractor(PygameGuiInteractor):
         super().restartBots()
         ScriptLoader.instance.object_map["positionText"].text = "Waiting..."
         ScriptLoader.instance.object_map["positionBG"].fill = "#666666"
-        if hasattr(self, "target_position"):
-            ScriptLoader.instance.sendEvent(
-                "Robot-0", "on_spawn", {"position": (
-                    self.target_position[0],
-                    self.target_position[1],
-                )}
-            )
+        ScriptLoader.instance.postInput(str(self.target_position[0]))
+        ScriptLoader.instance.postInput(str(self.target_position[1]))
 
     def generateObjects(self):
         generic_button_data = {

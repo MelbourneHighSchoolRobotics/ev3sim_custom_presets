@@ -1,21 +1,9 @@
-from ev3dev2.motor import LargeMotor
-from ev3sim.code_helpers import format_print, wait_for_tick, EventSystem
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B
 
-x, y = 0, 0
-def on_spawn(data):
-    global x, y
-    x, y = data["position"]
+horizontalMotor = LargeMotor(OUTPUT_A)
+verticalMotor = LargeMotor(OUTPUT_B)
 
-EventSystem.on_spawn = on_spawn
-wait_for_tick()
-EventSystem.handle_events()
+x = int(input())
 
-target_string = "{x}, {y}".format(x=x, y=y)
-
-format_print("The target is at <b>" + target_string + "</b>")
-wait_for_tick()
-
-sideMotor = LargeMotor("outA")
-verticalMotor = LargeMotor("outB")
-
-# Your code goes here!
+print(f"Green X={x}")
+print(f"Green Y=???")

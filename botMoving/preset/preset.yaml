@@ -36,6 +36,15 @@ elements:
   key: bgTable1
   sensorVisible: true
 - type: visual
+  name: Circle
+  radius: 2
+  fill: '#666666'
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 0.3
+  key: origin
+  sensorVisible: false
+- type: visual
   name: Text
   text: "Waiting for response..."
   font_style: fonts/Poppins-Regular.ttf
