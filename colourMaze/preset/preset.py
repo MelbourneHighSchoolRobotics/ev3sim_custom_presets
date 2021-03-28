@@ -36,7 +36,7 @@ class MovementInteractor(PygameGuiInteractor):
             a, b = arbiter.shapes
             if not hasattr(a, "movement_index"):
                 a, b = b, a
-            self.collect(a.movement_index)
+            self.collect(*a.movement_index)
             return False
 
         handler.begin = handle_collide
@@ -63,7 +63,7 @@ class MovementInteractor(PygameGuiInteractor):
             World.instance.unregisterObject(but)
         self.buttons = []
 
-        states = [random.randint(0, 2) for _ in range(3)]
+        self.states = [random.randint(0, 2) for _ in range(3)]
         for x in range(3):
             c_key = f"movement_bot_colour-{x}"
             o_key = f"movement_bot-button-{x}"
@@ -71,6 +71,9 @@ class MovementInteractor(PygameGuiInteractor):
                 ScreenObjectManager.instance.unregisterVisual(c_key)
             if o_key in ScreenObjectManager.instance.objects:
                 ScreenObjectManager.instance.unregisterVisual(o_key)
+            for y in range(3):
+                if o_key+f"-{y}" in ScreenObjectManager.instance.objects:
+                    ScreenObjectManager.instance.unregisterVisual(o_key+f"-{y}")
             c_obj = visualFactory(
                 name="Rectangle",
                 width=5,
@@ -78,35 +81,48 @@ class MovementInteractor(PygameGuiInteractor):
                 position=[
                     self.INDICATOR_POSITIONS[x], -35,
                 ],
-                fill=self.COLOURS[states[x]],
+                fill=self.COLOURS[self.states[x]],
                 sensorVisible=True,
                 stroke_width=0,
                 zPos=0.5,
             )
             ScreenObjectManager.instance.registerVisual(c_obj, c_key)
-            button = objectFactory(
-                visual={
-                    "name": "Rectangle",
-                    "width": 5,
-                    "height": 5,
-                    "fill": "#666666",
-                    "stroke_width": 0.1,
-                    "stroke": "#ffffff",
-                    "zPos": 0.5,
-                },
+            buttonLight = visualFactory(
+                name="Circle",
+                radius=0.5,
+                fill=self.COLOURS[self.states[x]],
                 position=[
                     self.X_POSITIONS[x],
-                    self.Y_POSITIONS[states[x]],
+                    self.Y_POSITIONS[self.states[x]],
                 ],
-                physics=True,
-                key=o_key
+                stroke_width=0,
+                zPos=0.6,
             )
-            button.shape.sensor = True
-            button.shape.collision_type = self.BALL_COLLISION_TYPE
-            button.shape.movement_index = x
-            self.buttons.append(button)
-            World.instance.registerObject(button)
-            ScreenObjectManager.instance.registerObject(button, o_key)
+            ScreenObjectManager.instance.registerVisual(buttonLight, o_key)
+            for y in range(3):
+                button = objectFactory(
+                    visual={
+                        "name": "Rectangle",
+                        "width": 5,
+                        "height": 5,
+                        "fill": "#666666",
+                        "stroke_width": 0.1,
+                        "stroke": "#ffffff",
+                        "zPos": 0.5,
+                    },
+                    position=[
+                        self.X_POSITIONS[x],
+                        self.Y_POSITIONS[y],
+                    ],
+                    physics=True,
+                    key=o_key+f"-{y}"
+                )
+                button.shape.sensor = True
+                button.shape.collision_type = self.BALL_COLLISION_TYPE
+                button.shape.movement_index = (x, y)
+                self.buttons.append(button)
+                World.instance.registerObject(button)
+                ScreenObjectManager.instance.registerObject(button, o_key+f"-{y}")
 
 
         self.restartBots()
@@ -198,11 +214,15 @@ class MovementInteractor(PygameGuiInteractor):
         self.addButtonEvent("respawn-button", self.spawnPosition)
         self._all_objs.append(reset_but)
 
-    def collect(self, idx):
-        ScriptLoader.instance.object_map["positionText"].text = f"Passed Gate {idx+1}!"
-        amount = 4 + 2 * idx
-        ScriptLoader.instance.object_map["positionBG"].fill = f"#22{amount*11}22"
-        self.collected[idx] = True
+    def collect(self, x, y):
+        if y == self.states[x]:
+            ScriptLoader.instance.object_map["positionText"].text = f"Passed Gate {x+1}!"
+            amount = 4 + 2 * x
+            ScriptLoader.instance.object_map["positionBG"].fill = f"#22{amount*11}22"
+            self.collected[x] = True
+        else:
+            ScriptLoader.instance.object_map["positionText"].text = f"Incorrect Gate!"
+            ScriptLoader.instance.object_map["positionBG"].fill = f"#ff2222"
 
     def accepted(self):
         for x in range(3):
