@@ -1,0 +1,3 @@
+bots:
+- custom/Coloured Padlock/bot
+preset_file: custom/Coloured Padlock/preset/preset.yaml
