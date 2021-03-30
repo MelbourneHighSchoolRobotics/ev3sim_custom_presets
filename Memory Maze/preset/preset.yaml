@@ -4,9 +4,9 @@ colours:
 
 interactors:
 - class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
-- class_path: [custom/colourMaze_2/preset/preset.py, MazeInteractor]
+- class_path: [custom/Memory Maze/preset/preset.py, MazeInteractor]
 
-preview_path: custom/colourMaze_2/preview.png
+preview_path: custom/Memory Maze/preview.png
 
 settings:
   screen:

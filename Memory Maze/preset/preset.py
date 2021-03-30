@@ -37,7 +37,7 @@ class MazeInteractor(PygameGuiInteractor):
     def loadMap(self, map_path):
         # load map
         custom_dir = find_abs_directory("workspace/custom/")
-        full_path = join(custom_dir, "colourMaze_2", map_path)
+        full_path = join(custom_dir, "Memory Maze", map_path)
         with open(full_path, "r") as f:
             conf = yaml.safe_load(f)
         # Despawn old stuff

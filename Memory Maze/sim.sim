@@ -1,0 +1,3 @@
+bots:
+- custom/Memory Maze/bot
+preset_file: custom/Memory Maze/preset/preset.yaml

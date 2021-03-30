@@ -8,7 +8,8 @@ botMotor = LargeMotor("outB")
 color = ColorSensor("in1")
 ultrasonic = UltrasonicSensor("in2")
 
-# Here's some helper functions to reduce some of the trail and error.
+# Here's some helper functions to reduce some of the trial and error.
+# Jump to the bottom of the file to seem how to use them.
 
 def wait():
     time.sleep(0.1)
@@ -25,22 +26,13 @@ def forward():
     topMotor.on_for_seconds(20, 1.9)
     wait()
 
-def add_to_pword(num):
-    global pword
-    pword = pword + str(num)
+pword = "LRS"
 
-x = 0
-pword = ""
+# Your code goes here!
 
-# Your code goes here
 forward()
 rotate(-1)
-x = x + 5
-add_to_pword(x)
-x = x - 10
-x = x * 2
-add_to_pword(x)
-#
+forward()
 
 print(f"Password is {pword}")
 CommandSystem.send_command(CommandSystem.TYPE_CUSTOM, pword)
