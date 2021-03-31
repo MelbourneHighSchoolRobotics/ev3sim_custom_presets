@@ -26,7 +26,7 @@ def forward():
     topMotor.on_for_seconds(20, 1.9)
     wait()
 
-pword = "LRS"
+pword = "RBBG"
 
 # Your code goes here!
 
