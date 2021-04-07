@@ -1,14 +1,7 @@
 import time
 from ev3dev2.motor import LargeMotor
-from ev3sim.code_helpers import EventSystem, wait_for_tick
 
-grid = []
-def on_spawn(data):
-    global grid
-    grid = data["grid"]
-EventSystem.on_spawn = on_spawn
-wait_for_tick()
-EventSystem.handle_events()
+grid = eval(input())
 
 topMotor = LargeMotor("outA")
 botMotor = LargeMotor("outB")

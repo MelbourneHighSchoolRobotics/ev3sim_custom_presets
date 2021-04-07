@@ -1,15 +1,11 @@
-from ev3sim.code_helpers import CommandSystem
-from ev3sim.constants import EV3SIM_BOT_COMMAND
 import yaml
 import math
 from os.path import join
-from ev3sim.visual.objects import visualFactory
 import pygame
 import pygame_gui
 from ev3sim.objects.base import objectFactory
 from ev3sim.simulation.interactor import PygameGuiInteractor
 from ev3sim.simulation.loader import ScriptLoader
-from ev3sim.simulation.world import World
 from ev3sim.visual.manager import ScreenObjectManager
 from ev3sim.file_helper import find_abs_directory
 
@@ -36,14 +32,12 @@ class MazeInteractor(PygameGuiInteractor):
     def restartBots(self):
         super().restartBots()
         if hasattr(self, "grid"):
-            ScriptLoader.instance.sendEvent(
-                "Robot-0", "on_spawn", {"grid": self.grid}
-            )
+            ScriptLoader.instance.postInput(str(self.grid))
 
     def loadMap(self, map_path):
         # load map
         custom_dir = find_abs_directory("workspace/custom/")
-        full_path = join(custom_dir, "arrowMaze", map_path)
+        full_path = join(custom_dir, "Arrow Maze", map_path)
         with open(full_path, "r") as f:
             conf = yaml.safe_load(f)
         # Despawn old stuff
@@ -61,7 +55,7 @@ class MazeInteractor(PygameGuiInteractor):
             for y in range(self.dimensions[1]):
                 arrow_obj = {
                     "name": "Image",
-                    "image_path": 'custom/arrowMaze/ui/arrow.png',
+                    "image_path": 'custom/Arrow Maze/ui/arrow.png',
                     "hAlignment": "m",
                     "vAlignment": "m",
                     "scale": (self.width - self.margin) / 200,

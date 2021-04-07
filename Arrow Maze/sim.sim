@@ -1,0 +1,3 @@
+bots:
+- custom/Arrow Maze/bot
+preset_file: custom/Arrow Maze/preset/preset.yaml

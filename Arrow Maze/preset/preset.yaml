@@ -4,9 +4,9 @@ colours:
 
 interactors:
 - class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
-- class_path: [custom/arrowMaze/preset/preset.py, MazeInteractor]
+- class_path: [custom/Arrow Maze/preset/preset.py, MazeInteractor]
 
-preview_path: custom/arrowMaze/preview.png
+preview_path: custom/Arrow Maze/preview.png
 
 settings:
   screen:
