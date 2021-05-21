@@ -1,0 +1,37 @@
+base_plate:
+  children: []
+  friction: 0.8
+  key: phys_obj
+  mass: 5
+  restitution: 0.2
+  visual:
+    fill: '#fcb716'
+    name: Polygon
+    stroke: '#6d49a3'
+    stroke_width: 0.15
+    verts:
+    - - 5.656854249492381
+      - 5.656854249492381
+    - - 5.656854249492381
+      - -5.65685424949238
+    - - -5.65685424949238
+      - -5.6568542494923815
+    - - -5.6568542494923815
+      - 5.656854249492379
+    zPos: 1
+devices:
+- LargeMotor:
+    port: outA
+    position:
+    - 0.0
+    - 0.0
+    rotation: 0
+    zPos: 3
+- InfraredSensor:
+    port: in1
+    position:
+    - 0.0
+    - 5.0
+    rotation: 90.0
+    zPos: 3.75
+hidden: true

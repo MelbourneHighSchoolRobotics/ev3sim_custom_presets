@@ -1,0 +1,3 @@
+bots:
+- custom/Ball Follower/bot
+preset_file: custom/Ball Follower/preset/preset.yaml
