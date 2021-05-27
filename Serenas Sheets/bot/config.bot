@@ -1,0 +1,14 @@
+base_plate:
+  children: []
+  friction: 0.8
+  key: phys_obj
+  mass: 5
+  restitution: 0.2
+  visual:
+    fill: null
+    name: Circle
+    stroke: null
+    stroke_width: 0
+    radius: 1
+    zPos: 1
+hidden: true
