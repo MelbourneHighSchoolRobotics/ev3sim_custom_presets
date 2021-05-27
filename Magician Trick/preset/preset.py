@@ -166,6 +166,8 @@ class MagicInteractor(PygameGuiInteractor):
                 except:
                     ScriptLoader.instance.object_map["thirteen_box"].fill = self.BAD_BG
                     self.setMood("sad")
+                self.animation_time = None
+                return
             self.animation_time = new_time
 
 
