@@ -1,0 +1,3 @@
+bots:
+- custom/Magician Trick/bot
+preset_file: custom/Magician Trick/preset/preset.yaml
