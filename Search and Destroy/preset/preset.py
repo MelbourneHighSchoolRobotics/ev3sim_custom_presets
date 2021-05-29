@@ -37,7 +37,7 @@ class MovementInteractor(PygameGuiInteractor):
     def setUpBall(self):
         self.ball_centre = objectFactory(
             **{
-                "visual": {"name": "Circle", "radius": 5, "fill": "#00ff00", "stroke_width": 0.1, "zPos": 3},
+                "visual": {"name": "Image", "image_path": "custom/Search and Destroy/ui/flag.png", "scale": 1.3, "zPos": 3},
                 "physics": True,
                 "key": "target",
             }
