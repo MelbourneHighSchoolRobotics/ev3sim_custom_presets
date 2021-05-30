@@ -1,3 +1,4 @@
 bots:
 - custom/Serenas Sheets/bot
 preset_file: custom/Serenas Sheets/preset/preset.yaml
+edit_allowed: false
