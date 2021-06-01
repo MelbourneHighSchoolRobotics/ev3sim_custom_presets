@@ -1,0 +1,4 @@
+bots:
+- custom/Pachinko/bot
+preset_file: custom/Pachinko/preset/preset.yaml
+edit_allowed: false

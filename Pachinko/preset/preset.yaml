@@ -1,0 +1,119 @@
+colours:
+  bg_color: "#eeeeee"
+  drop_fill: "#aaaaaa"
+  text_color: "#000000"
+  area_1_color: "#ef476f"
+  area_2_color: "#ffd166"
+  area_3_color: "#06d6a0"
+  area_4_color: "#118ab2"
+  area_5_color: "#073b4c"
+  text_bg: "#ffffff"
+  outline_color: "#000000"
+
+interactors:
+- class_path: [custom/Pachinko/preset/preset.py, PachinkoInteractor]
+
+preview_path: custom/Pachinko/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
+- type: object
+  collider: inherit
+  physics: true
+  static: true
+  position: [0, 55]
+  visual:
+    name: Rectangle
+    width: 195
+    height: 30
+    fill: drop_fill
+    stroke_width: 0
+    zPos: 1.5
+  key: drop
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 200
+    height: 10
+    fill: null
+    zPos: 10
+  position: [0, -80]
+  key: botBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 200
+    height: 10
+    fill: null
+    zPos: 10
+  position: [0, 80]
+  key: topBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 10
+    height: 150
+    fill: null
+    zPos: 10
+  position: [-105, 0]
+  key: leftBar
+- type: object
+  physics: true
+  static: true
+  visual:
+    name: Rectangle
+    width: 10
+    height: 150
+    fill: null
+    zPos: 10
+  position: [105, 0]
+  key: rightBar
+- type: visual
+  name: Rectangle
+  width: 52
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [0, 15]
+  zPos: 6
+  key: prize_outline
+- type: visual
+  name: Rectangle
+  width: 50
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [0, 15]
+  zPos: 7
+  key: prize_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 72
+  position: [0, 15]
+  hAlignment: m
+  vAlignment: m
+  zPos: 8
+  key: prize_output
