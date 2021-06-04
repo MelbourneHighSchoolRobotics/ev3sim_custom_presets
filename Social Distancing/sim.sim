@@ -1,0 +1,3 @@
+bots:
+- custom/Social Distancing/bot
+preset_file: custom/Social Distancing/preset/preset.yaml
