@@ -96,11 +96,11 @@ class ColorInteractor(PygameGuiInteractor):
                 self.recieved += 1
                 ScriptLoader.instance.object_map["colorText"].text = f"{self.recieved}: Red!"
             elif "green" in m.lower():
+                self.recieved += 1
                 ScriptLoader.instance.object_map["colorText"].text = f"{self.recieved}: Green!"
-                self.recieved += 1
             elif "blue" in m.lower():
-                ScriptLoader.instance.object_map["colorText"].text = f"{self.recieved}: Blue!"
                 self.recieved += 1
+                ScriptLoader.instance.object_map["colorText"].text = f"{self.recieved}: Blue!"
 
     def update(self, dt):
         super().update(dt)
