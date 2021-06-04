@@ -64,13 +64,13 @@ class PachinkoInteractor(PygameGuiInteractor):
                 num = visualFactory(
                     **{
                         "name": "Text",
-                        "text": "",
+                        "text": str(y+1),
                         "font_style": "fonts/Poppins-Regular.ttf",
-                        "fill": "text_color",
-                        "font_size": 72,
+                        "fill": "#000000",
+                        "font_size": 24,
                         "position": [
                             200 * (y + 0.5) / self.N_POINTS - 100,
-                            -30,
+                            -70,
                         ],
                         "hAlignment": "m",
                         "vAlignment": "m",

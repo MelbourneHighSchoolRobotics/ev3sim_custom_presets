@@ -16,8 +16,7 @@ class MovementInteractor(PygameGuiInteractor):
         self.spawnPosition()
 
     def setBotPos(self):
-        half_alien_width = self.alien.visual.verts[0][0]
-        self.robot.body.position = [self.alien.position[0] - half_alien_width - 60 + 55 * random.random(), 0]
+        self.robot.body.position = [self.alien.position[0] - 60 + 45 * random.random(), 0]
         self.robot.position = self.robot.body.position
         self.robot.body.angle = 0
         self.robot.rotation = self.robot.body.angle
@@ -25,8 +24,7 @@ class MovementInteractor(PygameGuiInteractor):
     def spawnPosition(self):
         self.alien.body.position = [50 * random.random(), 0]
         self.alien.position = self.alien.body.position
-        half_alien_width = self.alien.visual.verts[0][0]
-        self.distance_rect.position = [self.alien.position[0] - half_alien_width - 20, 0]
+        self.distance_rect.position = [self.alien.position[0] - 35, 0]
 
         self.setBotPos()
         self.restartBots()
