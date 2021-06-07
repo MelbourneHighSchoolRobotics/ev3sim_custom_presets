@@ -1,0 +1,4 @@
+bots:
+- custom/Silly Sequences/bot
+preset_file: custom/Silly Sequences/preset/preset.yaml
+edit_allowed: false

@@ -1,0 +1,526 @@
+colours:
+  bg_color: "#eeeeee"
+  outline_color: "#ff0000"
+  text_color: "#ffffff"
+  text_bg: "#444444"
+  label_text: "#000000"
+
+interactors:
+- class_path: [custom/Silly Sequences/preset/preset.py, SequenceInteractor]
+
+preview_path: custom/Silly Sequences/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
+- type: visual
+  name: Text
+  text: "Easy"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: label_text
+  font_size: 48
+  position: [0, 44]
+  hAlignment: m
+  vAlignment: t
+  zPos: 2
+  key: easy_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-60, 24]
+  zPos: 2
+  key: easy_0_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-60, 24]
+  zPos: 3
+  key: easy_0_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-60, 24]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: easy_0_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-20, 24]
+  zPos: 2
+  key: easy_1_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-20, 24]
+  zPos: 3
+  key: easy_1_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-20, 24]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: easy_1_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [20, 24]
+  zPos: 2
+  key: easy_2_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [20, 24]
+  zPos: 3
+  key: easy_2_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [20, 24]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: easy_2_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [60, 24]
+  zPos: 2
+  key: easy_3_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [60, 24]
+  zPos: 3
+  key: easy_3_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [60, 24]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: easy_3_text
+- type: visual
+  name: Text
+  text: "Medium"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: label_text
+  font_size: 48
+  position: [0, 7]
+  hAlignment: m
+  vAlignment: t
+  zPos: 2
+  key: medium_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-80, -13]
+  zPos: 2
+  key: medium_0_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-80, -13]
+  zPos: 3
+  key: medium_0_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-80, -13]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: medium_0_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-40, -13]
+  zPos: 2
+  key: medium_1_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-40, -13]
+  zPos: 3
+  key: medium_1_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-40, -13]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: medium_1_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [0, -13]
+  zPos: 2
+  key: medium_2_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [0, -13]
+  zPos: 3
+  key: medium_2_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [0, -13]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: medium_2_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [40, -13]
+  zPos: 2
+  key: medium_3_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [40, -13]
+  zPos: 3
+  key: medium_3_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [40, -13]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: medium_3_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [80, -13]
+  zPos: 2
+  key: medium_4_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [80, -13]
+  zPos: 3
+  key: medium_4_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [80, -13]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: medium_4_text
+- type: visual
+  name: Text
+  text: "Hard"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: label_text
+  font_size: 48
+  position: [0, -30]
+  hAlignment: m
+  vAlignment: t
+  zPos: 2
+  key: hard_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-84, -50]
+  zPos: 2
+  key: hard_0_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-84, -50]
+  zPos: 3
+  key: hard_0_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-84, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_0_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-56, -50]
+  zPos: 2
+  key: hard_1_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-56, -50]
+  zPos: 3
+  key: hard_1_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-56, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_1_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-28, -50]
+  zPos: 2
+  key: hard_2_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-28, -50]
+  zPos: 3
+  key: hard_2_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [-28, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_2_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [0, -50]
+  zPos: 2
+  key: hard_3_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [0, -50]
+  zPos: 3
+  key: hard_3_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [0, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_3_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [28, -50]
+  zPos: 2
+  key: hard_4_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [28, -50]
+  zPos: 3
+  key: hard_4_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [28, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_4_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [56, -50]
+  zPos: 2
+  key: hard_5_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [56, -50]
+  zPos: 3
+  key: hard_5_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [56, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_5_text
+- type: visual
+  name: Rectangle
+  width: 24
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [84, -50]
+  zPos: 2
+  key: hard_6_outline
+- type: visual
+  name: Rectangle
+  width: 22
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [84, -50]
+  zPos: 3
+  key: hard_6_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 54
+  position: [84, -50]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: hard_6_text
+
