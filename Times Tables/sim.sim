@@ -1,0 +1,4 @@
+bots:
+- custom/Times Tables/bot
+preset_file: custom/Times Tables/preset/preset.yaml
+edit_allowed: false

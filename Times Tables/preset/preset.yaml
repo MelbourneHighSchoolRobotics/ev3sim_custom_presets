@@ -1,0 +1,38 @@
+colours:
+  bg_color: "#eeeeee"
+  line_color: "#000000"
+  text_color: "#000000"
+  default_text_bg: "#eeeeee"
+  correct_text_bg: "#44cc44"
+  incorrect_text_bg: "#cc4444"
+
+interactors:
+- class_path: [custom/Times Tables/preset/preset.py, TimestablesInteractor]
+
+preview_path: custom/Times Tables/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
+- type: visual
+  name: Image
+  image_path: 'custom/Magician Trick/ui/magician_happy.png'
+  hAlignment: r
+  vAlignment: b
+  scale: 0.8
+  zPos: 1
+  position: [100, -75]
+  key: magician
