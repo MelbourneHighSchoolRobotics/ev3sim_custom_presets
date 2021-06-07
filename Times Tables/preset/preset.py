@@ -1,5 +1,4 @@
 import random
-from re import M
 import pygame
 import pygame_gui
 from ev3sim.simulation.loader import ScriptLoader
