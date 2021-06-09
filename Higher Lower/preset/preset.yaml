@@ -1,0 +1,68 @@
+colours:
+  bg_color: "#eeeeee"
+  outline_color: "#ff0000"
+  text_color: "#ffffff"
+  text_bg: "#444444"
+  label_text: "#000000"
+  sheet_color: "#222255"
+  sheet_stroke: "#4444cc"
+
+interactors:
+- class_path: [custom/Higher Lower/preset/preset.py, HigherInteractor]
+
+preview_path: custom/Higher Lower/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
+- type: visual
+  name: Rectangle
+  width: 44
+  height: 22
+  fill: outline_color
+  stroke_width: 0
+  position: [-30, -15]
+  zPos: 2
+  key: answer_outline
+- type: visual
+  name: Rectangle
+  width: 42
+  height: 20
+  fill: text_bg
+  stroke_width: 0
+  position: [-30, -15]
+  zPos: 3
+  key: answer_box
+- type: visual
+  name: Text
+  text: "???"
+  font_style: fonts/Poppins-Regular.ttf
+  fill: text_color
+  font_size: 64
+  position: [-30, -15]
+  hAlignment: m
+  vAlignment: m
+  zPos: 4
+  key: answer_output
+- type: visual
+  name: Image
+  image_path: 'custom/Higher Lower/ui/rachel_neutral.png'
+  hAlignment: r
+  vAlignment: b
+  scale: 0.8
+  zPos: 1
+  position: [100, -75]
+  key: rachel

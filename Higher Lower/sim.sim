@@ -1,0 +1,4 @@
+bots:
+- custom/Higher Lower/bot
+preset_file: custom/Higher Lower/preset/preset.yaml
+edit_allowed: false
