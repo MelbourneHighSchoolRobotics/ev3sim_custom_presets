@@ -1,0 +1,3 @@
+bots:
+- custom/Alien Hunt/bot
+preset_file: custom/Alien Hunt/preset/preset.yaml
