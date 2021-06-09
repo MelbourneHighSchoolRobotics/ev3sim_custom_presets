@@ -16,7 +16,7 @@ class SequenceInteractor(PygameGuiInteractor):
 
     SOLUTIONS = {
         "easy": [1, 8, 27, 64],
-        "medium": [1, 9, 25, 36, 49],
+        "medium": [1, 9, 25, 49, 81],
         "hard": [2, 4, 8, 16, 32, 64, 128]
     }
 
