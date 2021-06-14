@@ -1,0 +1,58 @@
+colours:
+  bg_color: "#35d54d"
+  outline_color: "#ff0000"
+  text_color: "#ffffff"
+  text_bg: "#444444"
+  label_text: "#000000"
+
+interactors:
+- class_path: [custom/3 of a Kind/preset/preset.py, CardInteractor]
+
+preview_path: custom/3 of a Kind/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
+- type: visual
+  name: Rectangle
+  width: 30
+  height: 40
+  stroke_width: 1
+  fill: null
+  stroke: "#ffffff"
+  position: [-40, 0]
+  zPos: 2
+  key: left-location
+- type: visual
+  name: Rectangle
+  width: 30
+  height: 40
+  stroke_width: 1
+  fill: null
+  stroke: "#ffffff"
+  position: [0, 0]
+  zPos: 2
+  key: mid-location
+- type: visual
+  name: Rectangle
+  width: 30
+  height: 40
+  stroke_width: 1
+  fill: null
+  stroke: "#ffffff"
+  position: [40, 0]
+  zPos: 2
+  key: right-location

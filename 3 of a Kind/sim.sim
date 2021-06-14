@@ -1,0 +1,4 @@
+bots:
+- custom/3 of a Kind/bot
+preset_file: custom/3 of a Kind/preset/preset.yaml
+edit_allowed: false
