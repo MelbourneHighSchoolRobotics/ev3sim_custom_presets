@@ -1,0 +1,3 @@
+bots:
+- custom/Sequence Commands/bot
+preset_file: custom/Sequence Commands/preset/preset.yaml
