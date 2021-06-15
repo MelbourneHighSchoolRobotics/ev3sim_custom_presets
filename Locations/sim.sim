@@ -1,0 +1,3 @@
+bots:
+- custom/Locations/bot
+preset_file: custom/Locations/preset/preset.yaml
