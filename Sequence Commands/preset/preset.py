@@ -86,7 +86,9 @@ class MovementInteractor(PygameGuiInteractor):
         self.ball_centre.body.position = self.positions[self.current_index]
         self.ball_centre.position = self.positions[self.current_index]
         self.restartBots()
-        ScriptLoader.instance.postInput(str(self.commands))
+        ScriptLoader.instance.postInput(str(len(self.commands)))
+        for direction, distance in self.commands:
+            ScriptLoader.instance.postInput(f"Move {direction} for {distance}")
 
     def setUpBall(self):
         self.ball_centre = objectFactory(

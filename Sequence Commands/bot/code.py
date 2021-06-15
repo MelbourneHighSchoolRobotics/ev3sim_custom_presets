@@ -4,15 +4,24 @@ from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B
 m_l = LargeMotor(OUTPUT_A)
 m_r = LargeMotor(OUTPUT_B)
 
-# This line just lets us receive a list. Don't worry about it :)
-commands = eval(input())
+number_commands = int(input())
+commands = []
+x = 0
+while x < number_commands:
+    msg = input().split()
+    # Move {direction} for {distance}
+    direction = msg[1]
+    # This is a whole number! Use int.
+    distance = int(msg[3])
+    commands.append((distance, direction))
+    x = x + 1
+
 
 robot_speed = 26.316
 
 print("Commands are", commands)
 
 i = 1
-# TODO: Mention len.
 while i < len(commands):
     direction = commands[i][0]
     distance = commands[i]
