@@ -55,6 +55,9 @@ class MovementInteractor(PygameGuiInteractor):
     def setBotPos(self):
         self.robot.body.position = [-50, 35]
         self.robot.position = self.robot.body.position
+        self.robot.body.angle = 0
+        self.robot.rotation = self.robot.body.angle
+        self.robot.body.angular_velocity = 0
 
     def spawnPosition(self):
         self.setBotPos()
