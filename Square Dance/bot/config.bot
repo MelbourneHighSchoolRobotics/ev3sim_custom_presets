@@ -20,4 +20,5 @@ base_plate:
       - 5.656854249492379
     zPos: 1
 devices: []
+robot_class: ev3sim.robot.AngleSnapRobot
 hidden: true

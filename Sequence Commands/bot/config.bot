@@ -34,4 +34,5 @@ devices:
     - -3.0
     rotation: 0
     zPos: 3.5
+robot_class: ev3sim.robot.AngleSnapRobot
 hidden: true
