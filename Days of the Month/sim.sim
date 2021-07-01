@@ -1,0 +1,4 @@
+bots:
+- custom/Days of the Month/bot
+preset_file: custom/Days of the Month/preset/preset.yaml
+edit_allowed: false
