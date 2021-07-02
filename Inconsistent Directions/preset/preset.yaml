@@ -1,0 +1,40 @@
+colours:
+  bg_color: "#aaaaaa"
+
+bot_names:
+- "Bot"
+
+interactors:
+- class_path: ev3sim.presets.pick_up_interactor.PickUpInteractor
+- class_path: [custom/Inconsistent Directions/preset/preset.py, MovementInteractor]
+
+preview_path: custom/Inconsistent Directions/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 600
+    MAP_HEIGHT: 450
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 1200
+  height: 900
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 0.1
+  key: bg
+  sensorVisible: true
+- type: visual
+  name: Rectangle
+  width: 300
+  height: 300
+  fill: '#444444'
+  stroke_width: 0.1
+  stroke: '#ffffff'
+  position: [-125, -50]
+  zPos: 0.2
+  key: bgTable1
+  sensorVisible: true
