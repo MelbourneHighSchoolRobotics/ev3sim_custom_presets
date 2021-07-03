@@ -20,8 +20,8 @@ class MovementInteractor(PygameGuiInteractor):
     MAPPING = {
         "North": [0, 1],
         "South": [0, -1],
-        "East": [-1, 0],
-        "West": [1, 0],
+        "East": [1, 0],
+        "West": [-1, 0],
     }
 
     OPPOSITES = {
@@ -34,8 +34,8 @@ class MovementInteractor(PygameGuiInteractor):
     ROTATION = {
         "North": 90,
         "South": 270,
-        "East": 180,
-        "West": 0,
+        "East": 0,
+        "West": 180,
     }
 
     keys = []
