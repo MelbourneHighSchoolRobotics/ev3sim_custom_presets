@@ -13,7 +13,8 @@ while x < number_commands:
     direction = msg[1]
     # This is a whole number! Use int.
     distance = int(msg[3])
-    commands.append((distance, direction))
+    # Lists in lists!
+    commands.append([distance, direction])
     x = x + 1
 
 
@@ -23,6 +24,7 @@ print("Commands are", commands)
 
 i = 1
 while i < len(commands):
+    # What is commands[i] here?
     direction = commands[i][0]
     distance = commands[i]
 
