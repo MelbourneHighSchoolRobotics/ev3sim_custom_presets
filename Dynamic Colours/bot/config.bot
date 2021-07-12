@@ -1,0 +1,30 @@
+base_plate:
+  children: []
+  friction: 0.8
+  key: phys_obj
+  mass: 5
+  restitution: 0.2
+  visual:
+    fill: '#cfd3d3'
+    name: Polygon
+    stroke: '#262424'
+    stroke_width: 0.1
+    verts:
+    - - 5
+      - 5
+    - - 5
+      - -5
+    - - -5
+      - -5
+    - - -5
+      - 5
+    zPos: 1
+devices:
+- ColorSensor:
+    port: in1
+    position:
+    - 0.0
+    - 0.0
+    rotation: 0
+    zPos: 3
+hidden: true

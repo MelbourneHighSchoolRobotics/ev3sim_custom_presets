@@ -1,0 +1,4 @@
+bots:
+- custom/Dynamic Colours/bot
+preset_file: custom/Dynamic Colours/preset/preset.yaml
+edit_allowed: false
