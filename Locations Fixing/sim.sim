@@ -1,0 +1,4 @@
+bots:
+- custom/Locations Fixing/bot
+preset_file: custom/Locations Fixing/preset/preset.yaml
+edit_allowed: false
