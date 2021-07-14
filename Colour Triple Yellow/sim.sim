@@ -1,0 +1,4 @@
+bots:
+- custom/Colour Triple Yellow/bot
+preset_file: custom/Colour Triple Yellow/preset/preset.yaml
+edit_allowed: false
