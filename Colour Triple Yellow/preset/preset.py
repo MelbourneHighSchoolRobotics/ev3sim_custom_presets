@@ -10,9 +10,9 @@ class ColorInteractor(PygameGuiInteractor):
     
     COLORS = [
         ("Green", 100, 130, 0.75, 1, 0.3, 0.6),
-        ("Red", 344, 372, 0.75, 1, 0.3, 0.6),
+        ("Red", 350, 372, 0.75, 1, 0.3, 0.6),
         ("Blue", 220, 245, 0.8, 1, 0.3, 0.55),
-        ("Yellow", 45, 65, 0.75, 1, 0.3, 0.6),
+        ("Yellow", 50, 65, 0.75, 1, 0.45, 0.6),
     ]
     
     def startUp(self):
