@@ -1,0 +1,4 @@
+bots:
+- custom/Customer Service/bot
+preset_file: custom/Customer Service/preset/preset.yaml
+edit_allowed: false

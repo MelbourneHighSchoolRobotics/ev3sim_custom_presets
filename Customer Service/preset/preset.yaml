@@ -1,0 +1,28 @@
+colours:
+  bg_color: "#eeeeee"
+  outline_color: "#ff0000"
+  text_color: "#ffffff"
+  text_bg: "#444444"
+  label_text: "#000000"
+
+interactors:
+- class_path: [custom/Customer Service/preset/preset.py, ServiceInteractor]
+
+preview_path: custom/Customer Service/preview.png
+
+settings:
+  screen:
+    MAP_WIDTH: 200
+    MAP_HEIGHT: 150
+
+elements:
+- type: visual
+  name: Rectangle
+  # Double the size of the screen, to handle inoptimal aspect ratios.
+  width: 400
+  height: 300
+  fill: bg_color
+  stroke_width: 0
+  position: [0, 0]
+  zPos: 1
+  key: bg
